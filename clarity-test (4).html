@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex, nofollow">
+<title>Clarity test page</title>
+
+<!-- Microsoft Clarity tracking code. The project ID defaults to your project and can be changed with ?id=YOUR_ID in the page address. -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", (new URLSearchParams(location.search).get("id")) || "z1om6gtsnk");
+</script>
+
+<style>
+  :root{--blue:#0067D2;--text:#212121;--text2:#555;--line:#E0E0E0;--bg:#F3F5F9;--ok:#00593B;--bad:#9A181D;--wait:#663C00}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 Inter,system-ui,"Segoe UI",sans-serif}
+  a{color:var(--blue)}
+  header{background:#fff;border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;position:sticky;top:0;z-index:10}
+  header b{font-size:18px}
+  .pills{display:flex;gap:8px;flex-wrap:wrap}
+  .pill{border:1px solid var(--line);border-radius:999px;padding:2px 12px;font-size:13px;font-weight:600;background:#fff;white-space:nowrap}
+  .pill.ok{background:#EDF7ED;color:var(--ok);border-color:#C8E6C9}.pill.bad{background:#FDEDED;color:var(--bad);border-color:#F5C6C6}.pill.wait{background:#FFF4E5;color:var(--wait);border-color:#FFE0B2}
+  main{max-width:920px;margin:0 auto;padding:24px}
+  h1{font-size:32px;margin:0 0 4px;line-height:1.2}
+  h2{font-size:20px;margin:0 0 8px}
+  h3{font-size:16px;margin:16px 0 4px}
+  p{margin:0 0 12px;color:var(--text2)}
+  .card{background:#fff;border:.5px solid #BDBDBD;border-radius:8px;box-shadow:0 1px 2px #0000000D;padding:16px;margin:16px 0}
+  .note{background:#E5F6FD;color:#014361;border-radius:4px;padding:8px 16px;margin:12px 0}
+  .warn{background:#FFF4E5;color:#663C00;border-radius:4px;padding:8px 16px;margin:12px 0}
+  button,.btn{font:inherit;font-weight:700;border-radius:6px;padding:8px 16px;border:1px solid #BDBDBD;background:#fff;color:var(--text);cursor:pointer}
+  button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+  button:disabled{background:#E0E0E0;border-color:#E0E0E0;color:#9E9E9E;cursor:not-allowed}
+  button:focus-visible,input:focus-visible,select:focus-visible,[role=tab]:focus-visible{outline:2px solid #408DDE;outline-offset:2px}
+  input[type=text],input[type=url],select{font:inherit;padding:10px 12px;border:1px solid #BDBDBD;border-radius:6px;background:#fff;min-width:0}
+  input[type=url],input[type=text]{width:100%}
+  label{display:block;font-weight:600;margin:8px 0 4px}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .row>.grow{flex:1;min-width:220px}
+  [role=tablist]{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:16px 0 0;flex-wrap:wrap}
+  [role=tab]{border:0;border-bottom:3px solid transparent;border-radius:0;background:none;padding:10px 14px;color:var(--text2)}
+  [role=tab][aria-selected=true]{color:var(--blue);border-bottom-color:var(--blue)}
+  [role=tabpanel]{padding-top:4px}
+  .scroll{height:360px;overflow:auto;background:linear-gradient(#fff,#F2F7FD);border:1px dashed #BDBDBD;border-radius:8px;padding:16px}
+  iframe{width:100%;border:1px solid #BDBDBD;border-radius:8px;background:#fff;margin-top:12px}
+  #status,#fstatus{margin-top:8px;font-weight:600;color:var(--ok)}
+  table{border-collapse:collapse;width:100%}
+  td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  td:first-child{width:44%;font-weight:600;color:var(--text2)}
+  .ok{color:var(--ok);font-weight:700}.bad{color:var(--bad);font-weight:700}.wait{color:var(--wait);font-weight:700}
+  details{margin:12px 0}summary{cursor:pointer;font-weight:600}
+  ul{margin:6px 0 0;padding-left:20px;color:var(--text2)}
+  small{color:var(--text2)}
+</style>
+</head>
+<body>
+
+<header>
+  <b>Clarity test page</b>
+  <div class="pills" aria-live="polite">
+    <span class="pill wait" id="p-script">Script: checking</span>
+    <span class="pill wait" id="p-data">Data: none yet</span>
+    <span class="pill" id="p-time">Time on page: 0:00</span>
+    <span class="pill" id="p-clicks">Clicks: 0</span>
+  </div>
+</header>
+
+<main>
+  <h1>Clarity test page</h1>
+  <p>Check that Clarity records sessions, and try it on a Figma link, a web page address or an HTML file. Use fake data only, and never type real names or emails.</p>
+
+  <section class="card" aria-labelledby="st">
+    <h2 id="st">1. Status</h2>
+    <table>
+      <tr><td>Project ID in use</td><td id="d-id"></td></tr>
+      <tr><td>Study tag</td><td id="d-study"></td></tr>
+      <tr><td>Page opened from</td><td id="d-proto"></td></tr>
+      <tr><td>Clarity script</td><td id="d-script" class="wait">checking...</td></tr>
+      <tr><td>Data sent to Clarity</td><td id="d-data" class="wait">none yet</td></tr>
+    </table>
+    <div class="note" id="advice">Click around for a minute. This panel updates by itself.</div>
+    <div class="row"><button id="copy">Copy a summary to share</button><span id="copied" role="status"></span></div>
+    <details>
+      <summary>Use a different project or study name</summary>
+      <p>Add these to the end of the page address, for example <code>clarity-test.html?id=YOUR_PROJECT_ID&amp;study=my-study</code>. Reload the page after changing it.</p>
+    </details>
+  </section>
+
+  <section class="card" aria-labelledby="tt">
+    <h2 id="tt">2. Choose what to test</h2>
+    <div role="tablist" aria-label="Test type">
+      <button role="tab" id="tab-basic" aria-controls="panel-basic" aria-selected="true">Basic tests</button>
+      <button role="tab" id="tab-figma" aria-controls="panel-figma" aria-selected="false" tabindex="-1">Figma link</button>
+      <button role="tab" id="tab-url" aria-controls="panel-url" aria-selected="false" tabindex="-1">Web page address</button>
+      <button role="tab" id="tab-file" aria-controls="panel-file" aria-selected="false" tabindex="-1">HTML file</button>
+    </div>
+
+    <!-- Basic tests -->
+    <div role="tabpanel" id="panel-basic" aria-labelledby="tab-basic">
+      <h3>Click test</h3>
+      <p>Click the buttons. The last one does nothing on purpose, so Clarity can flag dead clicks. Click it five times quickly to trigger a rage click.</p>
+      <div class="row">
+        <button class="primary" id="done">Mark task done</button>
+        <button id="next">Next step</button>
+        <button id="dead">Does nothing</button>
+      </div>
+      <div id="status" role="status"></div>
+      <h3>Masking test</h3>
+      <p>Type fake text. In the recording it should be hidden if masking is set to Strict.</p>
+      <label for="fake">Fake text</label>
+      <input id="fake" type="text" placeholder="Type something fake">
+      <h3>Scroll test</h3>
+      <p>Scroll inside the box and then down the page. This feeds the scroll heatmap.</p>
+      <div class="scroll" tabindex="0" aria-label="Scrollable area"><p>Scroll area. Keep going.</p><p style="margin-top:300px">Bottom of the scroll area.</p></div>
+    </div>
+
+    <!-- Figma link -->
+    <div role="tabpanel" id="panel-figma" aria-labelledby="tab-figma" hidden>
+      <p>Paste a Figma share link (prototype, design or file). The Figma file must allow anyone with the link to view it.</p>
+      <div class="warn"><b>What to expect:</b> Clarity records this page, but probably not what happens inside the Figma frame, because Clarity's code can't run on Figma's page. Use this to confirm that behaviour for yourself.</div>
+      <label for="fig">Figma link</label>
+      <div class="row">
+        <div class="grow"><input id="fig" type="url" placeholder="https://www.figma.com/proto/..." autocomplete="off"></div>
+        <select id="figh" aria-label="Frame height"><option value="480">Small frame</option><option value="640" selected>Medium frame</option><option value="820">Large frame</option></select>
+        <button class="primary" id="figload">Load</button>
+      </div>
+      <div id="fstatus" role="status"></div>
+      <div id="figframe"></div>
+    </div>
+
+    <!-- Web page address -->
+    <div role="tabpanel" id="panel-url" aria-labelledby="tab-url" hidden>
+      <p>Show a page that is already online, or one saved next to this file (for example <code>my-surveys-prototype.html</code>), inside this page.</p>
+      <div class="warn"><b>What to expect:</b> Clarity records this page. What it records inside the frame depends on the page: a page that has Clarity's code in it records itself. Some websites refuse to be shown inside another page, and the frame stays blank.</div>
+      <label for="urlin">Page address</label>
+      <div class="row">
+        <div class="grow"><input id="urlin" type="text" placeholder="https://example.com or my-surveys-prototype.html" autocomplete="off"></div>
+        <select id="urlh" aria-label="Frame height"><option value="480">Small frame</option><option value="640" selected>Medium frame</option><option value="820">Large frame</option></select>
+        <button class="primary" id="urlload">Load</button>
+      </div>
+      <div id="ustatus" role="status" style="margin-top:8px;font-weight:600"></div>
+      <div id="urlframe"></div>
+    </div>
+
+    <!-- HTML file -->
+    <div role="tabpanel" id="panel-file" aria-labelledby="tab-file" hidden>
+      <p>Pick an HTML file from your computer, for example a converted Figma prototype. This page turns into your page, with Clarity's code added if it is missing. This is the closest thing to testing a hosted page.</p>
+      <div class="note">Works best with single-file pages. Images or styles saved in other files may not load. To come back to this test page, reload it.</div>
+      <label for="fileIn">HTML file</label>
+      <div class="row"><input id="fileIn" type="file" accept=".html,.htm,text/html"><button class="primary" id="runfile" disabled>Run page with Clarity</button></div>
+      <div id="finfo" role="status" style="margin-top:8px;font-weight:600"></div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="ck">
+    <h2 id="ck">3. What to check in Clarity</h2>
+    <ul>
+      <li><b>Dashboard:</b> Live users should show 1 while you are on this page.</li>
+      <li><b>Recordings:</b> usually 5 to 10 minutes after you finish, once the session has ended (30 minutes of inactivity).</li>
+      <li><b>Heatmaps:</b> about 30 minutes after the first data.</li>
+      <li><b>Filters:</b> filter by the custom tags <code>study</code>, <code>test</code> and <code>step</code> to find your session.</li>
+      <li><b>Masking:</b> the text you typed should be hidden in the recording.</li>
+      <li><b>Dashboard date range:</b> set it to include today.</li>
+    </ul>
+  </section>
+</main>
+
+<script>
+  var params = new URLSearchParams(location.search);
+  var PROJECT = params.get("id") || "z1om6gtsnk";
+  var STUDY = params.get("study") || "clarity-test";
+  var $ = function(id){ return document.getElementById(id); };
+
+  // Clarity helpers. They do nothing if Clarity is blocked.
+  function c(){ if (window.clarity) window.clarity.apply(null, arguments); }
+  c("set", "study", STUDY);
+  c("set", "device", /Mobi|Android/i.test(navigator.userAgent) ? "mobile" : "desktop");
+  // Each key state gets its own address, so Clarity can show where you were.
+  function route(step){
+    c("set", "step", step);
+    try { history.pushState(null, "", "#" + step); } catch (e) { try { location.hash = step; } catch (e2) {} }
+  }
+  route("test-page");
+
+  // ---------- Status ----------
+  var isFile = location.protocol === "file:";
+  $("d-id").textContent = PROJECT;
+  $("d-study").textContent = STUDY;
+  $("d-proto").textContent = isFile ? "A file on this computer (file://)" : location.protocol.replace(":", "") + "://" + location.host;
+  $("d-proto").className = isFile ? "wait" : "ok";
+  var scriptState = "waiting", clicks = 0, t0 = Date.now(), sentCount = 0;
+  var tag = Array.prototype.slice.call(document.getElementsByTagName("script")).filter(function(x){ return x.src && x.src.indexOf("clarity.ms/tag/") > -1; })[0];
+  function setPill(id, text, cls){ var el = $(id); el.textContent = text; el.className = "pill " + (cls || ""); }
+  if (tag) {
+    tag.addEventListener("load", function(){ scriptState = "loaded"; $("d-script").textContent = "Loaded"; $("d-script").className = "ok"; setPill("p-script", "Script: loaded", "ok"); });
+    tag.addEventListener("error", function(){ scriptState = "blocked"; $("d-script").textContent = "Blocked or failed to load"; $("d-script").className = "bad"; setPill("p-script", "Script: blocked", "bad"); });
+  } else { scriptState = "missing"; $("d-script").textContent = "Tracking code not found"; $("d-script").className = "bad"; setPill("p-script", "Script: missing", "bad"); }
+
+  function advice(){
+    var m;
+    if (scriptState === "missing") m = "The tracking code is missing. Download this file again.";
+    else if (scriptState === "blocked") m = "Clarity's script could not load. Likely causes: a company network or firewall rule, an ad blocker or privacy extension, or being offline. Try a private window with extensions off, or ask IT to allow clarity.ms.";
+    else if (sentCount > 0) m = "Clarity is receiving data. Keep clicking for a minute, then close the tab. Recordings usually show in 5 to 10 minutes and heatmaps after about 30 minutes. Check the Clarity date range.";
+    else if (scriptState === "loaded" && isFile) m = "The script loaded but no data has been sent yet. Click around for a few seconds. If it stays empty, a page opened from your computer may not be recorded: ask IT to host this page.";
+    else if (scriptState === "loaded") m = "The script loaded. Click around so there is something to send.";
+    else m = "Still checking. Wait a few seconds.";
+    $("advice").textContent = m;
+  }
+  setInterval(function(){
+    var s = Math.floor((Date.now() - t0) / 1000);
+    setPill("p-time", "Time on page: " + Math.floor(s / 60) + ":" + ("0" + (s % 60)).slice(-2));
+    sentCount = performance.getEntriesByType("resource").filter(function(e){ return e.name.indexOf("clarity.ms/collect") > -1; }).length;
+    if (sentCount > 0) { $("d-data").textContent = "Yes (" + sentCount + " requests so far)"; $("d-data").className = "ok"; setPill("p-data", "Data: sending", "ok"); }
+    else if (s > 9) { $("d-data").textContent = "None yet"; $("d-data").className = scriptState === "loaded" ? "wait" : "bad"; setPill("p-data", "Data: none yet", scriptState === "loaded" ? "wait" : "bad"); }
+    advice();
+  }, 1500);
+  document.addEventListener("click", function(){ clicks++; setPill("p-clicks", "Clicks: " + clicks); }, true);
+
+  $("copy").addEventListener("click", function(){
+    var txt = ["Clarity test summary", "Project ID: " + PROJECT, "Study tag: " + STUDY, "Opened from: " + $("d-proto").textContent,
+      "Script: " + $("d-script").textContent, "Data sent: " + $("d-data").textContent, "Time on page: " + $("p-time").textContent.replace("Time on page: ", ""),
+      "Clicks: " + clicks, "Browser: " + navigator.userAgent].join("\n");
+    function done(msg){ $("copied").textContent = msg; setTimeout(function(){ $("copied").textContent = ""; }, 3000); }
+    try { navigator.clipboard.writeText(txt).then(function(){ done("Copied"); }, function(){ done("Could not copy. Select the status table and copy it."); }); }
+    catch (e) { done("Could not copy. Select the status table and copy it."); }
+  });
+
+  // ---------- Tabs ----------
+  var tabs = ["basic", "figma", "url", "file"];
+  function showTab(name, focus){
+    tabs.forEach(function(t){
+      var on = t === name;
+      $("tab-" + t).setAttribute("aria-selected", on); $("tab-" + t).tabIndex = on ? 0 : -1;
+      $("panel-" + t).hidden = !on;
+    });
+    c("set", "test", name); c("event", "tab_" + name); route(name === "basic" ? "basic-tests" : name + "-test");
+    if (focus) $("tab-" + name).focus();
+  }
+  tabs.forEach(function(t, i){
+    $("tab-" + t).addEventListener("click", function(){ showTab(t); });
+    $("tab-" + t).addEventListener("keydown", function(e){
+      if (e.key === "ArrowRight") { e.preventDefault(); showTab(tabs[(i + 1) % tabs.length], true); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); showTab(tabs[(i + tabs.length - 1) % tabs.length], true); }
+    });
+  });
+  c("set", "test", "basic");
+
+  // ---------- Basic tests ----------
+  $("done").addEventListener("click", function(){ c("event", "task_done"); $("status").textContent = "Task marked done"; });
+  $("next").addEventListener("click", function(){ c("event", "next_step"); var h = "step-" + (Math.floor(Math.random() * 3) + 1); route(h); $("status").textContent = "Moved to " + h; });
+
+  // ---------- Figma link ----------
+  function makeFrame(host, src, h, title){
+    host.innerHTML = ""; var f = document.createElement("iframe");
+    f.title = title; f.src = src; f.style.height = h + "px"; f.allowFullscreen = true; host.appendChild(f);
+  }
+  $("figload").addEventListener("click", function(){
+    var v = $("fig").value.trim(), out = $("fstatus");
+    if (!/^https:\/\/(www\.)?figma\.com\//.test(v)) { out.className = "bad"; out.textContent = "Enter a link that starts with https://www.figma.com/"; return; }
+    out.className = ""; out.style.color = "var(--ok)"; out.textContent = "Loaded. Click through the prototype for a minute.";
+    makeFrame($("figframe"), "https://www.figma.com/embed?embed_host=share&url=" + encodeURIComponent(v), $("figh").value, "Figma prototype");
+    c("event", "figma_loaded"); route("figma-loaded");
+  });
+
+  // ---------- Web page address ----------
+  $("urlload").addEventListener("click", function(){
+    var v = $("urlin").value.trim(), out = $("ustatus");
+    if (!v) { out.style.color = "var(--bad)"; out.textContent = "Enter a page address."; return; }
+    if (/^\s*(javascript|data):/i.test(v)) { out.style.color = "var(--bad)"; out.textContent = "Only web addresses or file names are allowed."; return; }
+    out.style.color = "var(--ok)"; out.textContent = "Loading. If the frame stays blank, that page does not allow being shown inside another page.";
+    makeFrame($("urlframe"), v, $("urlh").value, "Page under test");
+    c("event", "page_loaded"); route("page-loaded");
+  });
+
+  // ---------- HTML file ----------
+  var fileText = null;
+  $("fileIn").addEventListener("change", function(){
+    var f = this.files && this.files[0], info = $("finfo"); fileText = null; $("runfile").disabled = true;
+    if (!f) { info.textContent = ""; return; }
+    if (f.size > 3 * 1024 * 1024) { info.style.color = "var(--bad)"; info.textContent = "That file is larger than 3 MB. Pick a single-file page."; return; }
+    var r = new FileReader();
+    r.onload = function(){
+      fileText = String(r.result);
+      var has = /clarity\.ms\/tag\//.test(fileText);
+      info.style.color = "var(--ok)";
+      info.textContent = f.name + " is ready. " + (has ? "It already contains Clarity's code." : "Clarity's code will be added for you.");
+      $("runfile").disabled = false;
+    };
+    r.onerror = function(){ info.style.color = "var(--bad)"; info.textContent = "Could not read that file."; };
+    r.readAsText(f);
+  });
+  $("runfile").addEventListener("click", function(){
+    if (!fileText) return;
+    c("event", "html_file_run"); route("html-file-run");
+    var snippet = '<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script",' + JSON.stringify(PROJECT) + ');<' + '/script>';
+    var html = fileText;
+    if (!/clarity\.ms\/tag\//.test(html)) {
+      html = /<head[^>]*>/i.test(html) ? html.replace(/<head[^>]*>/i, function(m){ return m + snippet; }) : snippet + html;
+    }
+    document.open(); document.write(html); document.close();
+  });
+</script>
+</body>
+</html>
